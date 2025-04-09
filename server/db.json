@@ -1,0 +1,108 @@
+{
+  "users": [
+    {
+      "id": "idtest",
+      "username": "tester",
+      "email": "tester@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "d18eca47-e1fb-4259-b2b7-9cf2ead4ba29",
+      "username": "tienduy",
+      "email": "tienduy@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "d3dda531-1893-4ffa-972e-c3d55541f7d5",
+      "username": "alan",
+      "email": "alan@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "38550566-e1c6-40c2-a616-8ea74189f677",
+      "username": "felix",
+      "email": "felix@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "products": [
+    {
+      "id": "iphone-8-plus",
+      "name": "Iphone 8 Plus",
+      "image_url": "/images/iphone-8-plus.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "id": "iphone-11-pro-max",
+      "name": "Iphone 11 Pro Max",
+      "image_url": "/images/iphone-11-pro-max.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "id": "iphone-11",
+      "name": "Iphone 11",
+      "image_url": "/images/iphone-11.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "id": "iphone-se",
+      "name": "Iphone SE",
+      "image_url": "/images/iphone-se.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "id": "iphone-x",
+      "name": "Iphone X",
+      "image_url": "/images/iphone-x.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "id": "iphone-xr",
+      "name": "Iphone XR",
+      "image_url": "/images/iphone-xr.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "id": "iphone-xs-max",
+      "name": "Iphone XS Max",
+      "image_url": "/images/iphone-xs-max.jpg",
+      "brand": "APPLE"
+    },
+    {
+      "name": "Iphone 7s plus",
+      "brand": "APPLE",
+      "image_url": "https://images-na.ssl-images-amazon.com/images/I/71Q5RFc7NVL._AC_SL1500_.jpg",
+      "id": "00528308-fb0f-4d60-85b3-473ebd1aed76"
+    },
+    {
+      "name": "Iphone 12 Pro",
+      "brand": "APPLE",
+      "image_url": "https://images.frandroid.com/wp-content/uploads/2020/10/iphone-12-max-frandroid-2020.png",
+      "id": "5695c3c0-10b3-40d7-b39b-f8f807323dc4"
+    },
+    {
+      "name": "Iphone 12 Pro Max",
+      "brand": "APPLE",
+      "image_url": "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_announce-iphone12pro_10132020.jpg.landing-big_2x.jpg",
+      "id": "f7882d67-2207-4dfd-919e-c60a6477cdbd"
+    },
+    {
+      "name": "Iphone 11 Pro max gold",
+      "brand": "APPLE",
+      "image_url": "https://leronza.com/wp-content/uploads/2020/10/iPhone-12-Pro-24k-Gold-copy.png",
+      "id": "4c0ae0b4-9a15-4be7-96cf-6bf47366805c"
+    },
+    {
+      "name": "Iphone 12 Pro Gold",
+      "brand": "APPLE",
+      "image_url": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-gold-hero?wid=470&hei=556&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1604021659000",
+      "id": "f1d30887-14f9-4238-8ecd-c106d5f529e8"
+    },
+    {
+      "name": "test",
+      "brand": "OTHERS",
+      "image_url": "/images/image-default.jpg",
+      "id": "72fc536d-6992-4d26-a9ff-1294bb38cd5a"
+    }
+  ]
+}
