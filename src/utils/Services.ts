@@ -127,3 +127,79 @@ const applyRelatedEntityFormConfigsToGroup = (config, item, parentItem?, createF
     });
     return updatedGroupsWithEntityDataMapForFields;
   };
+
+  const { groups: screenConfigGroups } = config;
+  const form = getFormConfigByFormId(item, createForm);
+  if (!form) {
+    return screenConfigGroups;
+  }
+  const entityConfig = getEntityConfig(config.entity);
+  const entityConfigColumns = entityConfig?.columns;
+
+  const groupsToDisplay = form.settings.groups.map((group) => {
+    const fields = group.columns.reduce((acc, field) => {
+      const translatedHintText = form.settings.labels?.[getLanguageCode()]?.[`hint.${field.name}`] || null;
+      const fieldConfig = entityConfigColumns?.[field.name];
+      if (
+        field.displayOnMobileForm ||
+        ((field.required || fieldConfig?.required) && !systemEntityFields.includes(field.name))
+      ) {
+        acc.push({ ...field, hint: translatedHintText ?? field.hint });
+      }
+      return acc;
+    }, []);
+    return {
+      ...group,
+      fields: fields,
+    };
+  });
+
+  const screenConfigGroupFields =
+    screenConfigGroups.reduce((groupFields, group) => {
+      groupFields.push(...group.fields);
+      return groupFields;
+    }, []) || [];
+
+  const screenConfigFieldsMap = screenConfigGroupFields.reduce((acc, field) => {
+    acc[field.name] = field;
+    return acc;
+  }, {});
+  const screenConfigGroupsBehaviours =
+    screenConfigGroups.reduce((groupBehaviours, group) => {
+      groupBehaviours.push(...group.behaviours);
+      return groupBehaviours;
+    }, []) || [];
+
+  const lastGroup = groupsToDisplay[groupsToDisplay.length - 1];
+
+  const allFieldsInForm = groupsToDisplay.reduce((acc, group) => {
+    acc.push(...group.fields);
+    return acc;
+  }, []);
+  const allFieldsInFormNames = allFieldsInForm.reduce((acc, field) => {
+    acc.push(field.name);
+    return acc;
+  }, []);
+
+  const fieldsWithBehaviorsNotInForm = screenConfigGroupFields
+    .filter((field) => !!field.behaviour)
+    .filter((field) => allFieldsInFormNames.findIndex((item) => item === field.name) === -1);
+
+  lastGroup.fields = [...lastGroup.fields, ...fieldsWithBehaviorsNotInForm];
+  lastGroup.behaviours = screenConfigGroupsBehaviours;
+
+  const updatedGroupsWithEntityDataMapForFields = groupsToDisplay.map((group) => {
+    return {
+      ...group,
+      label: group.labels[getLanguageCode()] ?? group.labels["en-US"],
+      fields: [
+        ...[...group.fields].map((columnOptions) => {
+          if (!entityConfigColumns) return columnOptions;
+          const { name } = columnOptions;
+          return formFieldConfig(entityConfigColumns, name, columnOptions, screenConfigFieldsMap);
+        }),
+      ],
+    };
+  });
+  return updatedGroupsWithEntityDataMapForFields;
+};
